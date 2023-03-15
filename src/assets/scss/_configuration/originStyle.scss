@@ -1,0 +1,401 @@
+//<Разметка текста>====================================================================================================
+.offer__title {
+
+}
+
+.h1, h1 {
+  @include adaptiveValue(font-size, 40, 24);
+  font-weight: 600;
+}
+
+.h2, h2 {
+  @include adaptiveValue(font-size, 28, 22);
+  font-weight: 600;
+  @include adaptiveValue(margin-bottom, 40, 32);
+  @include mq('tablet') {
+    text-align: center;
+  }
+}
+
+.h3, h3 {
+
+}
+
+.h4, h4 {
+
+}
+
+.h5, h5 {
+
+}
+
+.h6, h6 {
+
+}
+
+
+//Стилизация кнопок
+.button-y {
+  background: $color_6;
+  color: $color_1;
+  padding: 0 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 57px;
+  cursor: pointer;
+  transition: .3s;
+  @include adaptiveValue(font-size, 18, 14);
+  font-weight: 600;
+  border-radius: rem(8);
+  border: 1px solid $color_6;
+
+  @include mq('tablet-wide') {
+    min-width: rem(188);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background: darken($color_6, 5);
+    }
+  }
+
+  &:focus {
+    background: darken($color_6, 5);
+  }
+  &:disabled{
+    opacity: .5;
+  }
+}
+
+.button-bor-y {
+  background: transparent;
+  color: $color_6;
+  padding: 0 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 57px;
+  cursor: pointer;
+  transition: .3s;
+  @include adaptiveValue(font-size, 18, 14);
+  font-weight: 600;
+  border-radius: rem(8);
+  border: 2px solid $color_6;
+
+  @include mq('tablet-wide') {
+    min-width: rem(188);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background: darken($color_6, 5);
+      color: $color_1;
+    }
+  }
+
+  &:focus {
+    background: darken($color_6, 5);
+  }
+}
+
+.button-g {
+  background: #7AD848;
+  color: #fff;
+  padding: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 22px;
+  cursor: pointer;
+  transition: .3s;
+  @include adaptiveValue(font-size, 12, 12);
+  font-weight: 600;
+  border-radius: rem(4);
+  border: 2px solid #7AD848;
+
+
+  @media (any-hover: hover) {
+    &:hover {
+      background: darken(#7AD848, 5);
+      color: #fff;
+    }
+  }
+
+  &:focus {
+    background: darken(#7AD848, 5);
+  }
+}
+
+//Стилизация input
+.input {
+  background: #FFFFFF;
+  border: 1px solid #414042;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: em(16) em(20);
+}
+
+.input-bg-bor{
+  background: #F5F9FD;
+  border: 1px solid #DDE0E4;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: em(16) em(20);
+  font-size: rem(16);
+  font-weight: 400;
+  width: 100%;
+  transition: all 0.3s ease 0s;
+
+  &::placeholder{
+    color: #909DAD;
+  }
+
+  &:focus,&:hover{
+    border-color: $color_6;
+    outline-color: $color_6;
+  }
+
+  &.error{
+    background: rgba(221, 0, 0, 0.05);
+    border: 1px solid #DD0000;
+  }
+}
+
+//Стилизация ul
+ul.greyPoint {
+
+  li {
+    padding-left: rem(15);
+    position: relative;
+    @include adaptiveValue(font-size, 14, 12);
+
+    &:before {
+      content: "•";
+      position: absolute;
+      font-size: rem(16);
+      color: $color_4;
+      top: -3px;
+      left: 0;
+    }
+  }
+}
+
+//Стилизация ol
+ol.greyNumber {
+  list-style-type: none;
+  counter-reset: num;
+  @include adaptiveValue(font-size, 14, 12);
+  color: $color_4;
+
+  li {
+    position: relative;
+    padding-left: rem(15);
+
+    &:before {
+      content: counter(num);
+      counter-increment: num;
+      display: inline-block;
+      position: absolute;
+      top: rem(1);
+      left: 0;
+      color: $color_4;
+      font-size: rem(12);
+      font-weight: 600;
+    }
+  }
+}
+
+//Стилизация pagination slider
+
+.swiper-pagination-bullets {
+  margin-top: rem(32);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  position: relative;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+
+  .swiper-pagination-bullet {
+    opacity: 1;
+    color: transparent;
+    background-color: transparent;
+    width: rem(16);
+    height: rem(16);
+    border-radius: 50%;
+    border: 1px solid transparent;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: $color_3;
+      border-radius: 50%;
+      z-index: 5;
+      top: 4px;
+      left: 4px;
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid $color_3;
+      border-right: 2px solid $color_3;
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid $color_3;
+      -moz-border-radius: 50px 50px 50px 50px;
+      border-radius: 50px 50px 50px 50px;
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+    &:after {
+      background-color: $color_6;
+    }
+  }
+}
+
+.dark .swiper-pagination-bullets {
+  margin-top: rem(32);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  position: relative;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+
+  .swiper-pagination-bullet {
+    opacity: 1;
+    color: transparent;
+    background-color: transparent;
+    width: rem(16);
+    height: rem(16);
+    border-radius: 50%;
+    border: 1px solid transparent;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color:  #192E73;
+      border-radius: 50%;
+      z-index: 5;
+      top: 4px;
+      left: 4px;
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #192E73;
+      border-right: 2px solid #192E73;
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid #192E73;
+      -moz-border-radius: 50px 50px 50px 50px;
+      border-radius: 50px 50px 50px 50px;
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+    &:after {
+      background-color: $color_6;
+    }
+  }
+}
+
+.checkbox {
+
+  &_error &__label::before {
+    box-shadow: 0 0 15px red;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__input:checked + &__label::after {
+    transform: scale(1);
+  }
+
+  &__label {
+    font-size: rem(16);
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    padding-left: rem(25);
+    color: #6E7072;
+
+    a{
+      color: #EA5400;
+    }
+  }
+
+  &__label::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    top: 4px;
+    left: 4px;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 0px 10px 0px 0px;
+    border: 2px solid #DDE0E4;
+  }
+
+  &__label::after {
+    transition: transform 0.5s ease 0s;
+    content: "";
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background-color: #EA5400;
+    border-radius: 4px;
+    transform: scale(0);
+    background-image: url("../public/assets/img/svg/check.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+.selectTemplate{
+  .vs__search, .vs__search:focus{
+    margin: 0 !important;
+  }
+  .vs__actions{
+    padding: 0 !important;
+  }
+  .vs__dropdown-toggle{
+    padding: 12px 16px;
+  }
+}
