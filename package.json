@@ -1,6 +1,6 @@
 {
-  "name": "new_proxy",
-  "version": "0.0.0",
+  "name": "Free Price",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
