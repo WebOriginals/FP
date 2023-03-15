@@ -44,16 +44,21 @@ export default {
   methods:{
     counterUp(max = 3000){
       if(this.account.price >= max){
-        this.account.price = max
+        this.account.price = max;
+        this.account.lastSettings = new Date()
+
       }else {
         this.account.price += 1
+        this.account.lastSettings = new Date()
       }
     },
     counterDown(min = 0){
       if(this.account.price <= min){
         this.account.price = 0
+        this.account.lastSettings = new Date()
       } else {
         this.account.price -= 1
+        this.account.lastSettings = new Date()
       }
     },
   },

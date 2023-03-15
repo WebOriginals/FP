@@ -72,5 +72,6 @@ export default {
   grid-gap: 12px;
   grid-template-columns: 1fr 1fr 1fr;
   max-width: 80%;
+  margin-bottom: 16px;
 }
 </style>

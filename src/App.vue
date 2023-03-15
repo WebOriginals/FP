@@ -21,7 +21,7 @@ import SpollerBuyReadyMadeAccount from "@/components/pages/main/Spollers/Spoller
           spoller-settings
       //template-spoller-view
     //template-account-view
-    //template-paggination-view
+    template-paggination-view(:currentPage="5" :totalPages="30" :pagesToShow="4")
     //template-tabs-view
 
 

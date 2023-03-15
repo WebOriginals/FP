@@ -72,6 +72,7 @@ export default {
   grid-gap: rem(16) rem(24);
 
 
+
   &[hidden] {
     display: none;
   }
@@ -86,6 +87,7 @@ export default {
 .blockOffers {
   display: grid;
   grid-template-columns: 1fr 280px;
+
 }
 
 .offers {
