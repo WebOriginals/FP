@@ -1,7 +1,7 @@
 export const accountModule = {
-    state () {
+    state() {
         return {
-            accounts:{
+            accounts: {
                 "status": "success",
                 "data": [
                     {
@@ -18,10 +18,10 @@ export const accountModule = {
                         "maxPrice": 10000,
                         "isFavourite": true,
                         "lastSettings": new Date(),
-                        "offers":[
-                            {"id":0, "price": 1758, "available": 200},
-                            {"id":1, "price": 1238, "available": 20},
-                            {"id":2, "price": 1118, "available": 450},
+                        "offers": [
+                            {"id": 0, "price": 1758, "available": 200},
+                            {"id": 1, "price": 1238, "available": 20},
+                            {"id": 2, "price": 1118, "available": 450},
                         ]
                     },
                     {
@@ -38,10 +38,10 @@ export const accountModule = {
                         "maxPrice": 10000,
                         "isFavourite": false,
                         "lastSettings": new Date(),
-                        "offers":[
-                            {"id":0, "price": 500, "available": 5},
-                            {"id":1, "price": 8000, "available": 8800},
-                            {"id":2, "price": 25, "available": 964},
+                        "offers": [
+                            {"id": 0, "price": 500, "available": 5},
+                            {"id": 1, "price": 8000, "available": 8800},
+                            {"id": 2, "price": 25, "available": 964},
                         ]
                     },
                     {
@@ -58,10 +58,10 @@ export const accountModule = {
                         "maxPrice": 10000,
                         "isFavourite": false,
                         "lastSettings": new Date(),
-                        "offers":[
-                            {"id":0, "price": 1758, "available": 200},
-                            {"id":1, "price": 1238, "available": 20},
-                            {"id":2, "price": 1118, "available": 450},
+                        "offers": [
+                            {"id": 0, "price": 1758, "available": 200},
+                            {"id": 1, "price": 1238, "available": 20},
+                            {"id": 2, "price": 1118, "available": 450},
                         ]
                     },
                     {
@@ -78,7 +78,7 @@ export const accountModule = {
                         "maxPrice": 10000,
                         "isFavourite": false,
                         "lastSettings": new Date(),
-                        "offers":[]
+                        "offers": []
                     },
                     {
                         "id": 4,
@@ -94,7 +94,7 @@ export const accountModule = {
                         "maxPrice": 10000,
                         "isFavourite": false,
                         "lastSettings": new Date(),
-                        "offers":[]
+                        "offers": []
                     },
                     {
                         "id": 5,
@@ -110,10 +110,10 @@ export const accountModule = {
                         "maxPrice": 10000,
                         "isFavourite": false,
                         "lastSettings": new Date(),
-                        "offers":[
-                            {"id":0, "price": 1758, "available": 200},
-                            {"id":1, "price": 1238, "available": 20},
-                            {"id":2, "price": 1118, "available": 450},
+                        "offers": [
+                            {"id": 0, "price": 1758, "available": 200},
+                            {"id": 1, "price": 1238, "available": 20},
+                            {"id": 2, "price": 1118, "available": 450},
                         ]
                     },
                     {
@@ -130,10 +130,10 @@ export const accountModule = {
                         "maxPrice": 10000,
                         "isFavourite": false,
                         "lastSettings": new Date(),
-                        "offers":[
-                            {"id":0, "price": 1758, "available": 200},
-                            {"id":1, "price": 1238, "available": 20},
-                            {"id":2, "price": 1118, "available": 450},
+                        "offers": [
+                            {"id": 0, "price": 1758, "available": 200},
+                            {"id": 1, "price": 1238, "available": 20},
+                            {"id": 2, "price": 1118, "available": 450},
                         ]
                     },
                     {
@@ -150,10 +150,10 @@ export const accountModule = {
                         "maxPrice": 10000,
                         "isFavourite": false,
                         "lastSettings": new Date(),
-                        "offers":[
-                            {"id":0, "price": 1758, "available": 200},
-                            {"id":1, "price": 1238, "available": 20},
-                            {"id":2, "price": 1118, "available": 450},
+                        "offers": [
+                            {"id": 0, "price": 1758, "available": 200},
+                            {"id": 1, "price": 1238, "available": 20},
+                            {"id": 2, "price": 1118, "available": 450},
                         ]
                     },
                 ],
@@ -162,59 +162,59 @@ export const accountModule = {
             selectedService: null,
             selectedCountry: null,
             showFP: false,
-            offers:[],
+            offers: [],
             activeElement: 0,
             arrayAccountsFavourites: [],
-            arrayAccountsLastSettings:[],
-
+            arrayAccountsLastSettings: [],
         }
     },
+
     mutations: {
-        getOfferAccount(state,  id = 0){
+        getOfferAccount(state, id = 0) {
             state.activeElement = id
             state.offers = state.accounts.data[id].offers;
         },
 
-        getChangeFavourite(state, id = 1,){
+        getChangeFavourite(state, id = 1,) {
             state.accounts.data[id].isFavourite = !state.accounts.data[id].isFavourite;
             state.accounts.data[id].lastSettings = new Date();
         },
 
-        setSelectedService(state, value){
-             state.selectedService = value
+        setSelectedService(state, value) {
+            state.selectedService = value
         },
 
-        setSelectedCountry(state, value){
+        setSelectedCountry(state, value) {
             state.selectedCountry = value
         },
 
-        setShowFP(state, value){
+        setShowFP(state, value) {
             state.showFP = value
         },
 
-        setOffers(state, value){
+        setOffers(state, value) {
             state.offers = value
         },
 
-        setActiveElement(state, value){
+        setActiveElement(state, value) {
             state.activeElement = value
         },
 
-        setArrayAccountsFavourites(state, array){
+        setArrayAccountsFavourites(state, array) {
             state.arrayAccountsFavourites = array
         },
 
-        setArrayAccountsLastSettings(state, array){
+        setArrayAccountsLastSettings(state, array) {
             state.arrayAccountsLastSettings = array
         },
 
-        setAccounts(state, array){
+        setAccounts(state, array) {
             state.accounts = array
         }
 
     },
 
-    getters:{
+    getters: {
         getArrayFromSelectCategory(state) {
             return [...new Set(state.accounts.data.map(category => category.category_name))];
         },
@@ -223,61 +223,53 @@ export const accountModule = {
             return [...new Set(state.accounts.data.map(category => category.country))];
         },
 
-        getFilteredArrayAccountsLastActivate(state){
+        getFilteredArrayAccountsLastActivate(state) {
             return state.accounts.data.filter((account) => {
                 return (
-                    ( state.selectedService === null|| account.category_name === state.selectedService) &&
-                    ( state.selectedCountry === null || account.country === state.selectedCountry) &&
+                    (state.selectedService === null || account.category_name === state.selectedService) &&
+                    (state.selectedCountry === null || account.country === state.selectedCountry) &&
                     (!state.showFP || account.freePrice)
                 )
             })
         },
 
-        getFilteredArrayAccountsFavourites(state){
+        getFilteredArrayAccountsFavourites(state) {
             return state.arrayAccountsFavourites.filter((account) => {
                 return (
-                    ( state.selectedService === null|| account.category_name === state.selectedService) &&
-                    ( state.selectedCountry === null || account.country === state.selectedCountry) &&
+                    (state.selectedService === null || account.category_name === state.selectedService) &&
+                    (state.selectedCountry === null || account.country === state.selectedCountry) &&
                     (!state.showFP || account.freePrice)
                 )
             })
         },
 
-        getFilteredArrayAccountsLastSettings(state){
+        getFilteredArrayAccountsLastSettings(state) {
             return state.arrayAccountsLastSettings.filter((account) => {
                 return (
-                    ( state.selectedService === null|| account.category_name === state.selectedService) &&
-                    ( state.selectedCountry === null || account.country === state.selectedCountry) &&
+                    (state.selectedService === null || account.category_name === state.selectedService) &&
+                    (state.selectedCountry === null || account.country === state.selectedCountry) &&
                     (!state.showFP || account.freePrice)
                 )
             })
         },
 
-        getFilteredArrayAccountsBay(state){
+        getFilteredArrayAccountsBay(state) {
             return state.arrayAccountsLastSettings.filter((account) => {
                 return (
-                    ( state.selectedService === null|| account.category_name === state.selectedService)
+                    (state.selectedService === null || account.category_name === state.selectedService)
                 )
             })
         },
 
-        getArrayFavoriteAccounts(state){
+        getArrayFavoriteAccounts(state) {
             return state.arrayAccountsFavourites = state.accounts.data.filter((account) => {
                 return (account.isFavourite === true)
             })
         },
 
-        getArrayLastSettings(state){
+        getArrayLastSettings(state) {
             return state.arrayAccountsLastSettings = [...state.accounts.data].sort((a, b) => b.lastSettings - a.lastSettings);
         },
-
-    },
-    actions:{
-
-    },
-
-    modules:{
-
     },
 
     namespaced: true

@@ -1,34 +1,42 @@
 <template lang="pug">
-//.templatePaginationView
-//  ul.templatePaginationView__nav.templatePaginationView-nav
-//    li.templatePaginationView-nav__btn
-//      span.material-icons
-//        svg(width='10', height='16', viewbox='0 0 10 16', fill='none', xmlns='http://www.w3.org/2000/svg')
-//          path(fill-rule='evenodd', clip-rule='evenodd', d='M7.91659 0L10 2.10536L4.16681 8L10 13.8946L7.91659 16L0 8L7.91659 0Z', fill='#254D71')
-//
-//    li.templatePaginationView-nav__numbers(
-//      v-for="pageNumber in totalPage"
-//      :key="pageNumber"
-//      :class="{ 'active': page === pageNumber }"
-//      @click="changePage(pageNumber)"
-//      )  {{pageNumber}}
-//
-//    li.templatePaginationView-nav__dots ...
-//    li.templatePaginationView-nav__btn(@click="getNumberPages")
-//      span.material-icons
-//        svg(width='10', height='16', viewbox='0 0 10 16', fill='none', xmlns='http://www.w3.org/2000/svg')
-//          path(fill-rule='evenodd', clip-rule='evenodd', d='M2.08341 0L0 2.10536L5.83319 8L0 13.8946L2.08341 16L10 8L2.08341 0Z', fill='#254D71')
+.templatePaginationView
+  ul.templatePaginationView__nav.templatePaginationViewnav
+    li.templatePaginationViewnav__btn(
+      @click="prevPage(currentPage)",
+      v-if="this.currentPage > 1 && this.currentPage !== 1"
+      )
+      span.material-icons
+        svg(width='10', height='16', viewbox='0 0 10 16', fill='none', xmlns='http://www.w3.org/2000/svg')
+          path(fill-rule='evenodd', clip-rule='evenodd', d='M7.91659 0L10 2.10536L4.16681 8L10 13.8946L7.91659 16L0 8L7.91659 0Z', fill='#254D71')
 
-.pagination
-  ul
-    li(v-if='_pagesToShow[0] !== 1')
-      a(href='#', @click.prevent='goToPage(1)') 1
-    li(v-if='_pagesToShow[0] !== 1 && _pagesToShow[1] !== null') ...
-    li(v-for='page in _pagesToShow', :key='page')
-      a(href='#', @click.prevent='goToPage(page)', :class='{ active: page === currentPage, ellipsis: page === null }')  {{ page }}
-    li(v-if='_pagesToShow[_pagesToShow.length - 1] !== totalPages && _pagesToShow[_pagesToShow.length - 2] !== null') ...
-    li(v-if='_pagesToShow[_pagesToShow.length - 1] !== totalPages')
-      a(href='#', @click.prevent='goToPage(totalPages)') {{ totalPages }}
+    li.templatePaginationViewnav__numbers(v-if='_pagesToShow[0] !== 1')
+      a(
+        href='#',
+        @click.prevent='goToPage(1)'
+        ) 1
+
+    li.templatePaginationViewnav__dots(v-if='_pagesToShow[0] !== 1 && _pagesToShow[1] !== null') ...
+
+    li.templatePaginationViewnav__numbers(v-for='page in _pagesToShow', :key='page')
+      a(
+        href='#',
+        @click.prevent='goToPage(page)',
+        :class='{ active: page === currentPage, templatePaginationViewnav__dots: page === null }'
+        )  {{ page }}
+    li.templatePaginationViewnav__dots(v-if='_pagesToShow[_pagesToShow.length - 1] !== totalPages && _pagesToShow[_pagesToShow.length - 2] !== null') ...
+
+    li.templatePaginationViewnav__numbers(v-if='_pagesToShow[_pagesToShow.length - 1] !== totalPages')
+      a(
+        href='#',
+        @click.prevent='goToPage(totalPages)'
+        ) {{ totalPages }}
+    li.templatePaginationViewnav__btn(
+      @click="nextPage(currentPage)",
+      v-if="this.currentPage !== this.totalPages && this.currentPage < this.totalPages"
+    )
+      span.material-icons
+        svg(width='10', height='16', viewbox='0 0 10 16', fill='none', xmlns='http://www.w3.org/2000/svg')
+          path(fill-rule='evenodd', clip-rule='evenodd', d='M2.08341 0L0 2.10536L5.83319 8L0 13.8946L2.08341 16L10 8L2.08341 0Z', fill='#254D71')
 
 </template>
 
@@ -49,23 +57,26 @@ export default {
       required: true
     }
   },
-  data(){
-    return{
-      page: 1,
-      totalPage: 0,
-      workArray: [],
-      start: 0,
-      end: 0,
-      numberForStart: 0
-    }
-  },
+
 
   methods: {
     goToPage(page) {
       if (page >= 1 && page <= this.totalPages) {
         this.$emit('page-change', page);
       }
-    }
+    },
+    nextPage(page){
+      if (page !== this.totalPages && page < this.totalPages) {
+        page += 1
+        this.$emit('nextPage', page);
+      }
+    },
+    prevPage(page){
+      if (page > 1 && page !== 1) {
+        page -= 1
+        this.$emit('prevPage', page);
+      }
+    },
   },
 
   computed: {
@@ -100,11 +111,6 @@ export default {
       return pages;
     }
   },
-
-  mounted() {
-
-
-  }
 }
 </script>
 
@@ -118,7 +124,7 @@ export default {
     justify-content: center;
   }
 
-  &-nav {
+  &nav {
     display: flex;
     gap: 8px;
     padding: 5px 0 !important;
@@ -149,7 +155,12 @@ export default {
     }
 
     &__dots {
-      padding: 3px 5px;
+      position: relative;
+      cursor: default;
+
+      &:before{
+        content: '...';
+      }
     }
   }
 }

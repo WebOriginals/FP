@@ -19,10 +19,7 @@ import SpollerBuyReadyMadeAccount from "@/components/pages/main/Spollers/Spoller
         template(v-slot:body)
           spoller-buy-ready-made-account
           spoller-settings
-      //template-spoller-view
-    //template-account-view
-    template-paggination-view(:currentPage="5" :totalPages="30" :pagesToShow="4")
-    //template-tabs-view
+
 
 
 </template>

@@ -18,8 +18,7 @@
           :account="account"
           :key="account.id"
         )
-      //template-paggination-view(:incoming-array="filterCategory" :limit-pages="6" @clickNumberPage="pageOutput")
-
+      template-paggination-view(:currentPage="22" :totalPages="30" :pagesToShow="5" @page-change="pc" @nextPage="np" @prevPage="pp")
 
 </template>
 
@@ -39,16 +38,22 @@ export default {
   },
   data() {
     return {
-      croppedArrayWithAccounts:{},
+
     }
   },
   methods: {
     ...mapMutations({
       setSelectedService: 'account/setSelectedService',
     }),
-    pageOutput(second) {
-     this.croppedArrayWithAccounts = second
+   pc(event){
+      console.log(event)
+   },
+    np(event){
+      console.log(event)
     },
+    pp(event){
+      console.log(event)
+    }
   },
 
   computed:{
