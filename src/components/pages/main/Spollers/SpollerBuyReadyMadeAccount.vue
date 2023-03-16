@@ -3,10 +3,10 @@
   .buyReadyMadeAccounts__spollersTitle(data-spoller) Купить готовые аккаунты
   .buyReadyMadeAccounts__spollersBody
     .grid
-      p Мы предусмотрели способы пополнения, которые подойдут каждому. Банковские карты, электронные кошельки, криптовалюта — используйте то, что удобно и выгодно вам! Обязательно следите за новостями в наших соцсетях, там мы рассказываем про акции для пополнения и сообщаем о задержках на стороне платежных систем.
+      p 55Мы предусмотрели способы пополнения, которые подойдут каждому. Банковские карты, электронные кошельки, криптовалюта — используйте то, что удобно и выгодно вам! Обязательно следите за новостями в наших соцсетях, там мы рассказываем про акции для пополнения и сообщаем о задержках на стороне платежных систем.
       v-select.buyReadyMadeAccounts__select.selectTemplate(
         :modelValue="selectedService"
-        :options="getArrayFromSelectCategory"
+        :options="arrayOptionsSelectService"
         @update:modelValue="setSelectedService"
         label="label"
         :searchable="false"
@@ -18,7 +18,16 @@
           :account="account"
           :key="account.id"
         )
-      template-paggination-view(:currentPage="22" :totalPages="30" :pagesToShow="5" @page-change="pc" @nextPage="np" @prevPage="pp")
+
+      template-paggination-view(
+        v-if="accounts.data.length > 11"
+        :currentPage="22"
+        :totalPages="30"
+        :pagesToShow="5"
+        @pageChange="getPageChange"
+        @nextPage="getNextPage"
+        @prevPage="getPrevPage"
+        )
 
 </template>
 
@@ -45,24 +54,24 @@ export default {
     ...mapMutations({
       setSelectedService: 'account/setSelectedService',
     }),
-   pc(event){
+    getPageChange(event){
       console.log(event)
    },
-    np(event){
+    getNextPage(event){
       console.log(event)
     },
-    pp(event){
+    getPrevPage(event){
       console.log(event)
     }
   },
 
   computed:{
     ...mapState({
+      arrayOptionsSelectService: state => state.account.arrayOptionsSelectService,
       selectedService: state => state.account.selectedService,
       accounts: state => state.account.accounts
     }),
     ...mapGetters({
-      getArrayFromSelectCategory: 'account/getArrayFromSelectCategory',
       getFilteredArrayAccountsBay: 'account/getFilteredArrayAccountsBay',
     }),
 

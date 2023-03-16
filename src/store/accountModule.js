@@ -159,6 +159,18 @@ export const accountModule = {
                 ],
                 "pagination": {"current_page": 1, "last_page": 1, "per_page": 5, "total": 1}
             },
+            arrayOptionsSelectService: [
+                {id: 0, label: "Google"},
+                {id: 1, label: "VK"},
+                {id: 2, label: "Telegram"},
+                {id: 3, label: "Instagram"},
+                {id: 4, label: "Twitter"},
+            ],
+            arrayOptionsSelectCountry: [
+                {id: 0, label: "Россия"},
+                {id: 1, label: "Англия"},
+                {id: 2, label: "Греция"},
+            ],
             selectedService: null,
             selectedCountry: null,
             showFP: false,
@@ -215,19 +227,12 @@ export const accountModule = {
     },
 
     getters: {
-        getArrayFromSelectCategory(state) {
-            return [...new Set(state.accounts.data.map(category => category.category_name))];
-        },
-
-        getArrayFromSelectCountry(state) {
-            return [...new Set(state.accounts.data.map(category => category.country))];
-        },
 
         getFilteredArrayAccountsLastActivate(state) {
             return state.accounts.data.filter((account) => {
                 return (
-                    (state.selectedService === null || account.category_name === state.selectedService) &&
-                    (state.selectedCountry === null || account.country === state.selectedCountry) &&
+                    (state.selectedService === null || account.category_name === state.selectedService.label) &&
+                    (state.selectedCountry === null || account.country === state.selectedCountry.label) &&
                     (!state.showFP || account.freePrice)
                 )
             })
@@ -236,8 +241,8 @@ export const accountModule = {
         getFilteredArrayAccountsFavourites(state) {
             return state.arrayAccountsFavourites.filter((account) => {
                 return (
-                    (state.selectedService === null || account.category_name === state.selectedService) &&
-                    (state.selectedCountry === null || account.country === state.selectedCountry) &&
+                    (state.selectedService === null || account.category_name === state.selectedService.label) &&
+                    (state.selectedCountry === null || account.country === state.selectedCountry.label) &&
                     (!state.showFP || account.freePrice)
                 )
             })
@@ -246,8 +251,8 @@ export const accountModule = {
         getFilteredArrayAccountsLastSettings(state) {
             return state.arrayAccountsLastSettings.filter((account) => {
                 return (
-                    (state.selectedService === null || account.category_name === state.selectedService) &&
-                    (state.selectedCountry === null || account.country === state.selectedCountry) &&
+                    (state.selectedService === null || account.category_name === state.selectedService.label) &&
+                    (state.selectedCountry === null || account.country === state.selectedCountry.label) &&
                     (!state.showFP || account.freePrice)
                 )
             })
@@ -256,7 +261,7 @@ export const accountModule = {
         getFilteredArrayAccountsBay(state) {
             return state.arrayAccountsLastSettings.filter((account) => {
                 return (
-                    (state.selectedService === null || account.category_name === state.selectedService)
+                    (state.selectedService === null || account.category_name === state.selectedService.label)
                 )
             })
         },

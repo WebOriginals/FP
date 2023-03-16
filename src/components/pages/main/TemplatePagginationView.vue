@@ -62,7 +62,7 @@ export default {
   methods: {
     goToPage(page) {
       if (page >= 1 && page <= this.totalPages) {
-        this.$emit('page-change', page);
+        this.$emit('pageChange', page);
       }
     },
     nextPage(page){
@@ -144,11 +144,11 @@ export default {
       font-size: 14px;
       cursor: pointer;
 
-      &:hover {
+      & a:hover {
         color: #EA5400
       }
 
-      &.active {
+      & .active {
         color: #EA5400;
         font-weight: 700;
       }

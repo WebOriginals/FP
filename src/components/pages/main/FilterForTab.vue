@@ -2,7 +2,7 @@
 .filtersForTab
   v-select.filtersForTab__select.selectTemplate(
     :modelValue="selectedCountry"
-    :options="getArrayFromSelectCountry"
+    :options="arrayOptionsSelectCountry"
     @update:modelValue="setSelectedCountry"
     label="label"
     :searchable="false"
@@ -11,7 +11,7 @@
   )
   v-select.filtersForTab__select.selectTemplate(
     :modelValue="selectedService"
-    :options="getArrayFromSelectCategory"
+    :options="arrayOptionsSelectService"
     @update:modelValue="setSelectedService"
     label="label"
     :searchable="false"
@@ -37,14 +37,13 @@ export default {
   },
   computed: {
     ...mapState({
+      arrayOptionsSelectCountry: state => state.account.arrayOptionsSelectCountry,
+      arrayOptionsSelectService: state => state.account.arrayOptionsSelectService,
       selectedCountry: state => state.account.selectedCountry,
       selectedService: state => state.account.selectedService,
       showFP: state => state.account.showFP
     }),
-    ...mapGetters({
-      getArrayFromSelectCountry: 'account/getArrayFromSelectCountry',
-      getArrayFromSelectCategory: 'account/getArrayFromSelectCategory'
-    }),
+
     setShowFP:{
       get () {
         return this.showFP

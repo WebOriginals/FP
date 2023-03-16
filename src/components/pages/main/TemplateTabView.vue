@@ -11,6 +11,8 @@
       )
       span(v-else) аккаунтов нет
 
+
+
     .offers(v-if="$store.state.account.offers.length > 0")
       h4 Предложения
       p Средняя цена продажи за последний час: <b>6 ₽</b>
@@ -25,19 +27,30 @@
 
     .offers(v-else)
       h4 Предложений нет
+
+  template-paggination-view(
+    v-if="accounts.length > 11"
+    :currentPage="22"
+    :totalPages="30"
+    :pagesToShow="5"
+    @pageChange="getPageChange"
+    @nextPage="getNextPage"
+    @prevPage="getPrevPage"
+    )
 </template>
 
 <script>
 import FilterForTab from "@/components/pages/main/FilterForTab.vue";
 import TemplateCardGood from "@/components/pages/main/TemplateCardGood.vue";
 import {mapMutations, mapState} from "vuex";
-
+import templatePagginationView from "@/components/pages/main/TemplatePagginationView.vue";
 export default {
   name: "TemplateTabView",
 
   components: {
     TemplateCardGood,
-    FilterForTab
+    FilterForTab,
+    templatePagginationView
   },
   props: {
     NumberTab: {
@@ -51,6 +64,7 @@ export default {
   },
   computed: {
     ...mapState({
+      accounts: state => state.account.accounts,
       activeElement: state => state.account.activeElement,
       offers: state => state.account.offers
     }),
@@ -58,7 +72,17 @@ export default {
       getOfferAccount: 'account/getOfferAccount'
     })
   },
-
+methods:{
+  getPageChange(event){
+    console.log(event)
+  },
+  getNextPage(event){
+    console.log(event)
+  },
+  getPrevPage(event){
+    console.log(event)
+  }
+},
  mounted() {
 
  }
